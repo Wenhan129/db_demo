@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 // Import routes for the Links
 const user = require('./routes/user.route');
+const event = require('./routes/event.route');
 const app = express();
 
 // Set up mongoose connection
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use('/user', user);
+app.use('/event', event);
 
 
 let port = 1031;

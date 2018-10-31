@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let LinkSchema = new Schema({
-    linkUrl: String,
-    linkDuration: Number
+let LINK_SCHEMA = new Schema({
+    link_url: String,
+    link_duration: Number
 })
 
-let userSchema = new Schema({
-    userName: String,
-    userIP: String,
-    userClickedLinks: [LinkSchema]
+let USER_SCHEMA = new Schema({
+    user_name: String,
+    user_ip: String,
+    user_clicked_links: [LINK_SCHEMA]
 })
 
-module.exports = mongoose.model('URL', userSchema);
+module.exports = mongoose.model('USER', USER_SCHEMA);
