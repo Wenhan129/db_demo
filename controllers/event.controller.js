@@ -54,3 +54,35 @@ exports.event_delete = (req, res, next) => {
         res.send('Event Info Deleted Successfully!');
     });
 }
+
+// Batch Insert a bulk of data
+exports.event_batch_add = (req, res, next) => {
+    Event.insertMany(req.body, (error, events) => {
+        if (error) {
+            console.log(`Error is ${error}`);
+            next(error);
+        } else
+            res.send("Event Info Inserted Successfully!");
+    });
+
+}
+
+// Group Event Info by URL
+exports.event_group_url = (req, res, next) => {
+    const urlSequence = ["home", "test", "build", "network", "release", "dev", "sale", "bank", "state", "street", "coffee", "chart"];
+    const data = {};
+
+    urlSequence.forEach((url) => {
+        console.log(url);
+        Event.find({
+            "url": url
+        }, function (error, result) {
+            if (error) {
+                next(error);
+            } else {
+                data[url] = result.length;
+                console.log(data);
+            }
+        })
+    });
+}

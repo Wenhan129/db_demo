@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "mongoose": "^5.3.8"
   }
